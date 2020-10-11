@@ -100,7 +100,8 @@ public class Product implements Serializable{
 	public void setDate(Instant date) {
 		this.date = date;
 	}
-	
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -124,6 +125,10 @@ public class Product implements Serializable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public Set<Category> getCategories() {
+		return this.categories;
 	}
 
 }
