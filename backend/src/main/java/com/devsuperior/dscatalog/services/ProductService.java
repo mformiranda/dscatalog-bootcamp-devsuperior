@@ -26,7 +26,7 @@ public class ProductService {
 
 	@Autowired
 	private ProductRepository repository;
-	
+
 	@Autowired
 	private CategoryRepository categoryRepository;
 
@@ -82,16 +82,15 @@ public class ProductService {
 		entity.setDate(dto.getDate());
 		entity.setImgUrl(dto.getImgUrl());
 		entity.setPrice(dto.getPrice());
-		
-		//Antes de copiar as categorias, é importante limpar as que,
-		//por qualquer motivo, já estejam na entidade.
+
+		// Antes de copiar as categorias, é importante limpar as que,
+		// por qualquer motivo, já estejam na entidade.
 		entity.getCategories().clear();
-		for(CategoryDTO catDto : dto.getCategories()) {
+		for (CategoryDTO catDto : dto.getCategories()) {
 			Category category = categoryRepository.getOne(catDto.getId());
-			//Lembrando, o próximo entity é um Product
+			// Lembrando, o próximo entity é um Product
 			entity.getCategories().add(category);
 		}
-		
+
 	}
-	
 }
